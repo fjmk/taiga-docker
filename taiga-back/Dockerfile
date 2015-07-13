@@ -16,18 +16,22 @@ RUN \
   git clone https://github.com/taigaio/taiga-back.git /usr/local/taiga/taiga-back && \
   mkdir /usr/local/taiga/media /usr/local/taiga/static /usr/local/taiga/logs && \
   cd /usr/local/taiga/taiga-back && \
-  git checkout 1.8.0 && \
+  git checkout 2.1.0 && \
   pip install -r requirements.txt && \
   touch /usr/local/taiga/taiga-back/settings/dockerenv.py && \
   touch /usr/local/taiga/circus.ini
+
+RUN git clone https://github.com/taigaio/taiga-contrib-letschat.git /usr/local/taiga/taiga-letschat && \
+    cd /usr/local/taiga/taiga-letschat/back && pip install .
 
 # Add Taiga Configuration
 ADD ./local.py /usr/local/taiga/taiga-back/settings/local.py
 
 # Configure and Start scripts
+ADD ./initdb /usr/local/taiga/initdb
 ADD ./configure /usr/local/taiga/configure
 ADD ./start /usr/local/taiga/start
-RUN chmod +x /usr/local/taiga/configure /usr/local/taiga/start
+RUN chmod +x /usr/local/taiga/configure /usr/local/taiga/start /usr/local/taiga/initdb
 
 VOLUME /usr/local/taiga/media
 VOLUME /usr/local/taiga/static

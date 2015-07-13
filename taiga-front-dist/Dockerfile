@@ -20,12 +20,14 @@ RUN \
   mkdir -p /usr/local/taiga && \
   git clone https://github.com/taigaio/taiga-front-dist.git /usr/local/taiga/taiga-front-dist && \
   cd /usr/local/taiga/taiga-front-dist && \
-  git checkout 1.8.0
+  git checkout 2.1.0
 
 # Configuration and Start scripts
 ADD ./configure /usr/local/taiga/configure
 ADD ./start /usr/local/taiga/start
 RUN chmod +x /usr/local/taiga/configure /usr/local/taiga/start
+ADD https://raw.githubusercontent.com/taigaio/taiga-contrib-letschat/master/front/dist/letschat.js /usr/local/taiga/taiga-front-dist/dist/js/
+RUN cd /usr/local/taiga/taiga-front-dist/dist/js/ && chmod 644 *.js
 
 EXPOSE 80 443
 
