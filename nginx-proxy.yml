@@ -1,0 +1,10 @@
+nginxproxy:
+    image: jwilder/nginx-proxy
+    ports:
+        - 80:80
+    volumes:
+        - /var/run/docker.sock:/tmp/docker.sock
+    mem_limit: 512m
+    cpu_shares: 128
+    restart: always
+
