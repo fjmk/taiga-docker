@@ -21,13 +21,17 @@ RUN \
   touch /usr/local/taiga/taiga-back/settings/dockerenv.py && \
   touch /usr/local/taiga/circus.ini
 
+RUN git clone https://github.com/taigaio/taiga-contrib-letschat.git /usr/local/taiga/taiga-letschat && \
+    cd /usr/local/taiga/taiga-letschat/back && pip install .
+
 # Add Taiga Configuration
 ADD ./local.py /usr/local/taiga/taiga-back/settings/local.py
 
 # Configure and Start scripts
+ADD ./initdb /usr/local/taiga/initdb
 ADD ./configure /usr/local/taiga/configure
 ADD ./start /usr/local/taiga/start
-RUN chmod +x /usr/local/taiga/configure /usr/local/taiga/start
+RUN chmod +x /usr/local/taiga/configure /usr/local/taiga/start /usr/local/taiga/initdb
 
 VOLUME /usr/local/taiga/media
 VOLUME /usr/local/taiga/static

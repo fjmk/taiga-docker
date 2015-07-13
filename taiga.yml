@@ -1,3 +1,13 @@
+mongo:
+  image: mongo:latest
+letschat:
+  image: sdelements/lets-chat
+  links:
+    - mongo
+  ports:
+    - 8080:8080
+    - 5222:5222
+
 data:
   image: tianon/true
   volumes:
@@ -13,7 +23,7 @@ db:
   volumes_from:
     - data
 taigaback:
-  image: htdvisser/taiga-back
+  build: taiga-back
   hostname: dev.example.com
   environment:
     SECRET_KEY: examplesecretkey
@@ -24,10 +34,11 @@ taigaback:
     EMAIL_HOST_PASSWORD: yourpassword
   links:
     - db:postgres
+    - letschat:letschat.con
   volumes_from:
     - data
 taigafront:
-  image: htdvisser/taiga-front-dist
+  build: taiga-front-dist
   hostname: dev.example.com
   links:
     - taigaback
