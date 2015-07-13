@@ -2,10 +2,12 @@ mongo:
   image: mongo:latest
 letschat:
   image: sdelements/lets-chat
+  environment:
+    VIRTUAL_HOST: chat.example.com
+    VIRTUAL_PORT: 8080
   links:
     - mongo
   ports:
-    - 8080:8080
     - 5222:5222
 
 data:
@@ -24,7 +26,7 @@ db:
     - data
 taigaback:
   build: taiga-back
-  hostname: dev.example.com
+  hostname: tapi.example.com
   environment:
     SECRET_KEY: examplesecretkey
     EMAIL_USE_TLS: True
@@ -32,6 +34,7 @@ taigaback:
     EMAIL_PORT: 587
     EMAIL_HOST_USER: youremail@gmail.com
     EMAIL_HOST_PASSWORD: yourpassword
+    VIRTUAL_HOST: tapi.example.com
   links:
     - db:postgres
     - letschat:letschat.con
@@ -39,10 +42,10 @@ taigaback:
     - data
 taigafront:
   build: taiga-front-dist
-  hostname: dev.example.com
+  hostname: taiga.example.com
+  environment:
+    VIRTUAL_HOST: taiga.example.com
   links:
     - taigaback
   volumes_from:
     - data
-  ports:
-    - 0.0.0.0:80:80
