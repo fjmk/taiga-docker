@@ -35,6 +35,7 @@ taigaback:
     EMAIL_HOST_USER: youremail@gmail.com
     EMAIL_HOST_PASSWORD: yourpassword
     VIRTUAL_HOST: tapi.example.com
+    VIRTUAL_PORT: 8000
   links:
     - db:postgres
     - letschat:letschat.con
