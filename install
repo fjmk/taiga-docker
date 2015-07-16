@@ -21,5 +21,5 @@ sudo docker-compose -f taiga.yml build
 sudo docker-compose -f taiga.yml up -d
 
 # initialize database
-docker exec -t taigadocker_taigaback_1 /usr/local/taiga/initdb
+sudo docker exec -t taigadocker_taigaback_1 /usr/local/taiga/initdb
 
