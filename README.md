@@ -31,7 +31,7 @@ Point your browser to http://chat.example.com/
 In another tab of your browser, go to your project, ADMIN -> PLUGINS and fill in:
 ```bash
 Let's Chat messages endpoint
-http://chat.example.com/rooms/project1/messages
+http://chat.example.com:8080/rooms/project1/messages
 Let's Chat Auth token
 NTVjYjI2YmQzNz  very log token M4NzkxMzAwOTUyNyZjFmM2NhNWFlNjQ4MDUyNGM0ZjM5MQ==
 ```
