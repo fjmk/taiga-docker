@@ -24,7 +24,7 @@ sudo docker run --rm hello-world
 # get taiga-docker
 git clone https://github.com/fjmk/taiga-docker.git
 cd taiga-docker/
-git checkout feature/nginx-proxy 
+git checkout 1.8.0
 
 # set right domain name
 sed -i s/example.com/$DOMAIN/g taiga.yml
