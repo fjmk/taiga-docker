@@ -8,6 +8,7 @@ letschat:
   links:
     - mongo
   ports:
+    - 8080:8080
     - 5222:5222
 
 data:
@@ -38,7 +39,7 @@ taigaback:
     VIRTUAL_PORT: 8000
   links:
     - db:postgres
-    - letschat:letschat.con
+    - letschat:chat.example.com
   volumes_from:
     - data
 taigafront:
