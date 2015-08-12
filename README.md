@@ -1,3 +1,8 @@
+
+# WARNING
+
+This uses branch master of taigoio; cutting edge version, only for the brave of heart!
+
 ## Install taiga + letschat on new VM (Ubuntu 14.04 or higher)
 
 ```bash
