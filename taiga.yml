@@ -27,13 +27,13 @@ db:
     - data
 taigaback:
   build: taiga-back
-  hostname: tapi.example.com
+  hostname: taiga.example.com
   environment:
     SECRET_KEY: examplesecretkey
     EMAIL_USE_TLS: True
     EMAIL_HOST: smtp.gmail.com
     EMAIL_PORT: 587
-    EMAIL_HOST_USER: youremail@gmail.com
+    EMAIL_HOST_USER: youremail
     EMAIL_HOST_PASSWORD: yourpassword
     VIRTUAL_HOST: tapi.example.com
     VIRTUAL_PORT: 8000
