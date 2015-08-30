@@ -2,6 +2,8 @@ FROM nginx:1.7
 
 MAINTAINER Hylke Visser <htdvisser@gmail.com>
 
+ENV PUBLIC_REGISTER_ENABLED=false
+
 # Install Git
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
