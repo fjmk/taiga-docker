@@ -20,7 +20,7 @@ docker run --name taiga_back_container_name --link postgres_container_name:postg
 
 For a complete taiga installation (``htdvisser/taiga-back`` and ``htdvisser/taiga-front-dist``) you can use this docker-compose configuration:
 
-```yaml
+```
 data:
   image: tianon/true
   volumes:
@@ -99,3 +99,9 @@ Email configuration:
 * ``EMAIL_HOST_USER`` defaults to ``""``
 * ``EMAIL_HOST_PASSWORD`` defaults to ``""``
 * ``DEFAULT_FROM_EMAIL`` defaults to ``"no-reply@example.com"``
+
+Database configuration:
+
+* ``POSTGRES_DB_NAME``. Use to override database name.
+* ``POSTGRES_USER``. Use to override user specified in linked postgres container.
+* ``POSTGRES_PASSWORD``. Use to override password specified in linked postgres container.
