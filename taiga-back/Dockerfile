@@ -19,10 +19,11 @@ RUN \
   git checkout 2.1.0 && \
   pip install -r requirements.txt && \
   touch /usr/local/taiga/taiga-back/settings/dockerenv.py && \
-  touch /usr/local/taiga/circus.ini
+  touch /usr/local/taiga/circus.ini \
+  pip install taiga-contrib-letschat
 
-RUN git clone https://github.com/taigaio/taiga-contrib-letschat.git /usr/local/taiga/taiga-letschat && \
-    cd /usr/local/taiga/taiga-letschat/back && pip install .
+##RUN git clone https://github.com/taigaio/taiga-contrib-letschat.git /usr/local/taiga/taiga-letschat && \
+##    cd /usr/local/taiga/taiga-letschat/back && pip install .
 
 # Add Taiga Configuration
 ADD ./local.py /usr/local/taiga/taiga-back/settings/local.py
